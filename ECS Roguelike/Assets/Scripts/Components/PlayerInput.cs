@@ -4,7 +4,9 @@ using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class PlayerInputComponent : IComponentData
+/// <see cref="PlayerInputSystem"/>
+
+public struct PlayerInput : IComponentData
 {
     public bool leftClick;
     public bool rightClick;
