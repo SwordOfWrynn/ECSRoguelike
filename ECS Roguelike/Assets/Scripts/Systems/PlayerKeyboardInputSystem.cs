@@ -12,14 +12,17 @@ public class PlayerKeyboardInputSystem : ComponentSystem
 {
     protected override void OnUpdate()
     {
-        if (GameManager.localPlayersTurn && (Input.GetAxisRaw("Horizontal") != 0 || (int)Input.GetAxisRaw("Vertical") != 0))
+        if ((Input.GetAxisRaw("Horizontal") != 0 || (int)Input.GetAxisRaw("Vertical") != 0))
         {
-            Entities.WithAll<LocalPlayerTag>().ForEach((ref MovementInput playerMovementInput) =>
+            Entities.WithAll<LocalPlayerTag>().ForEach((ref MovementInput playerMovementInput, ref GameTurn gameTurn) =>
             {
-                playerMovementInput.HorizontalValue = (int)Input.GetAxisRaw("Horizontal");
-                playerMovementInput.VerticalValue = (int)Input.GetAxisRaw("Vertical");
+                if (gameTurn.IsTurnValue && gameTurn.HasPlayedValue == false)
+                {
+                    playerMovementInput.HorizontalValue = (int)Input.GetAxisRaw("Horizontal");
+                    playerMovementInput.VerticalValue = (int)Input.GetAxisRaw("Vertical");
+                    gameTurn.HasPlayedValue = true;
+                }
             });
-            GameManager.localPlayersTurn = false;
         }
     }
 }

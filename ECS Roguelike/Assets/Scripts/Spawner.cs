@@ -27,7 +27,8 @@ public class Spawner : MonoBehaviour
             typeof(Rotation),
             typeof(PlayerMouseInput),
             typeof(MovementInput),
-            typeof(LocalPlayerTag)
+            typeof(LocalPlayerTag),
+            typeof(GameTurn)
             );
 
         Entity entity = m_EntityManager.CreateEntity(playerArchtype);

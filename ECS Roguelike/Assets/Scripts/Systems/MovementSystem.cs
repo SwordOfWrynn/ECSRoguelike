@@ -8,12 +8,15 @@ using static Unity.Mathematics.math;
 
 public class MovementSystem : JobComponentSystem
 {
+    const int STAMINA_PER_MOVE = 1;
+
     [BurstCompile]
-    struct MovementSystemJob : IJobForEach<Translation, MovementInput>
+    struct MovementSystemJob : IJobForEach<Translation, MovementInput, Stamina>
     {
-        
-        public void Execute(ref Translation translation, ref MovementInput movementInput)
+
+        public void Execute(ref Translation translation, ref MovementInput movementInput, ref Stamina stamina)
         {
+            if(stamina > )
             translation.Value += new float3(movementInput.HorizontalValue, movementInput.VerticalValue, 0);
             movementInput.HorizontalValue = movementInput.VerticalValue = 0;
         }
