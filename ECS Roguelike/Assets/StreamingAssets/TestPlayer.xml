@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<TestUnit>
+	<Name>TestUnit</Name>
+	<BaseSpritePath>TestUnit/Art/BaseSprite.png</BaseSpritePath>
+</TestUnit>

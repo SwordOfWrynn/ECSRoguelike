@@ -6,22 +6,22 @@ using Unity.Jobs;
 using Unity.Mathematics;
 using UnityEngine;
 
-public class PlayerInputSystem : JobComponentSystem
+[UpdateBefore(typeof(MovementSystem))]
+public class PlayerMouseInputSystem : JobComponentSystem
 {
-
     [BurstCompile]
-    struct PlayerInputJob : IJobForEach<PlayerInput>
+    struct PlayerMouseInputJob : IJobForEach<PlayerMouseInput>
     {
 
         public bool leftClick;
         public bool rightClick;
         public float3 mousePosition;
 
-        public void Execute(ref PlayerInput data)
+        public void Execute(ref PlayerMouseInput data)
         {
-            data.leftClick = leftClick;
-            data.rightClick = rightClick;
-            data.mousePosition = mousePosition;
+            data.LeftClickValue = leftClick;
+            data.RightClickValue = rightClick;
+            data.MousePositionValue = mousePosition;
         }
     }
 
@@ -35,7 +35,7 @@ public class PlayerInputSystem : JobComponentSystem
             mousePos = new float3(hit.point.x, 0, hit.point.z);
         }
 
-        var job = new PlayerInputJob
+        var job = new PlayerMouseInputJob
         {
             leftClick = Input.GetMouseButtonDown(0),
             rightClick = Input.GetMouseButtonDown(1),
