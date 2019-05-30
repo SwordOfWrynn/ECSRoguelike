@@ -16,9 +16,12 @@ public class MovementSystem : JobComponentSystem
 
         public void Execute(ref Translation translation, ref MovementInput movementInput, ref Stamina stamina)
         {
-            if(stamina > )
-            translation.Value += new float3(movementInput.HorizontalValue, movementInput.VerticalValue, 0);
-            movementInput.HorizontalValue = movementInput.VerticalValue = 0;
+            if (round(stamina.Value) > STAMINA_PER_MOVE)
+            {
+                translation.Value += new float3(movementInput.HorizontalValue, movementInput.VerticalValue, 0);
+                movementInput.HorizontalValue = movementInput.VerticalValue = 0;
+                stamina.Value -= STAMINA_PER_MOVE;
+            }
         }
     }
     

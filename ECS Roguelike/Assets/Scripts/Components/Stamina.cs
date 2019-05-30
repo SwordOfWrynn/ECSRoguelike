@@ -6,7 +6,7 @@ using Unity.Mathematics;
 [Serializable]
 public struct Stamina : IComponentData
 {
-    public int Value;
+    public float Value;
     public int StaminaCap;
-    public int StaminaPerTurn;
+    public float StaminaPerTurn;
 }

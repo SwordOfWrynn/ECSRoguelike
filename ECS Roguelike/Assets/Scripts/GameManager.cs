@@ -4,6 +4,11 @@ using UnityEngine;
 
 public static class GameManager
 {
-    public static bool localPlayersTurn = true;
+    static bool m_LocalPlayersTurn = true;
+
+    public static void SetPlayerTurn(bool isPlayerTurn)
+    {
+        m_LocalPlayersTurn = isPlayerTurn;
+    }
 
 }

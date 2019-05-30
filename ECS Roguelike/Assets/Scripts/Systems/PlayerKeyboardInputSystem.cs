@@ -14,14 +14,10 @@ public class PlayerKeyboardInputSystem : ComponentSystem
     {
         if ((Input.GetAxisRaw("Horizontal") != 0 || (int)Input.GetAxisRaw("Vertical") != 0))
         {
-            Entities.WithAll<LocalPlayerTag>().ForEach((ref MovementInput playerMovementInput, ref GameTurn gameTurn) =>
+            Entities.WithAll<LocalPlayerTag>().ForEach((ref MovementInput playerMovementInput) =>
             {
-                if (gameTurn.IsTurnValue && gameTurn.HasPlayedValue == false)
-                {
-                    playerMovementInput.HorizontalValue = (int)Input.GetAxisRaw("Horizontal");
-                    playerMovementInput.VerticalValue = (int)Input.GetAxisRaw("Vertical");
-                    gameTurn.HasPlayedValue = true;
-                }
+                playerMovementInput.HorizontalValue = (int)Input.GetAxisRaw("Horizontal");
+                playerMovementInput.VerticalValue = (int)Input.GetAxisRaw("Vertical");
             });
         }
     }

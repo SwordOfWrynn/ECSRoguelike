@@ -28,7 +28,7 @@ public class Spawner : MonoBehaviour
             typeof(PlayerMouseInput),
             typeof(MovementInput),
             typeof(LocalPlayerTag),
-            typeof(GameTurn)
+            typeof(Stamina)
             );
 
         Entity entity = m_EntityManager.CreateEntity(playerArchtype);
@@ -39,6 +39,12 @@ public class Spawner : MonoBehaviour
         {
             VisualID = visualID
         });
+        m_EntityManager.SetComponentData(entity, new Stamina
+        {
+            Value = 5,
+            StaminaCap = 20,
+            StaminaPerTurn = 2
+        }) ;
     }
 
     // Update is called once per frame
