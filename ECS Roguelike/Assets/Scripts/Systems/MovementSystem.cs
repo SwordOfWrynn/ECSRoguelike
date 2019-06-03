@@ -13,10 +13,12 @@ public class MovementSystem : JobComponentSystem
     [BurstCompile]
     struct MovementSystemJob : IJobForEach<Translation, MovementInput, Stamina>
     {
-
+        public bool run;
         public void Execute(ref Translation translation, ref MovementInput movementInput, ref Stamina stamina)
         {
-            if (round(stamina.Value) > STAMINA_PER_MOVE)
+            if (round(stamina.Value) > STAMINA_PER_MOVE && 
+                (movementInput.HorizontalValue != 0 || movementInput.VerticalValue != 0) 
+                && run)
             {
                 translation.Value += new float3(movementInput.HorizontalValue, movementInput.VerticalValue, 0);
                 movementInput.HorizontalValue = movementInput.VerticalValue = 0;
@@ -27,7 +29,10 @@ public class MovementSystem : JobComponentSystem
     
     protected override JobHandle OnUpdate(JobHandle inputDependencies)
     {
-        var job = new MovementSystemJob();
+        var job = new MovementSystemJob()
+        {
+            run = GameManager.run
+        };
         
         // Now that the job is set up, schedule it to be run. 
         return job.Schedule(this, inputDependencies);

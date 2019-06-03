@@ -22,20 +22,26 @@ public class StaminiaSystem : JobComponentSystem
         // Add fields here that your job needs to do its work.
         // For example,
         //    public float deltaTime;
-        
-        
+
+        public bool run;
         
         public void Execute(ref Stamina stamina)
         {
-            stamina.Value += stamina.StaminaPerTurn;
-            if (stamina.Value > stamina.StaminaCap)
-                stamina.Value = stamina.StaminaCap;
+            if (run)
+            {
+                stamina.Value += stamina.StaminaPerTurn;
+                if (stamina.Value > stamina.StaminaCap)
+                    stamina.Value = stamina.StaminaCap;
+            }
         }
     }
     
     protected override JobHandle OnUpdate(JobHandle inputDependencies)
     {
-        var job = new StaminiaSystemJob();
+        var job = new StaminiaSystemJob()
+        {
+            run = GameManager.run
+        };
         
         // Assign values to the fields on your job here, so that it has
         // everything it needs to do its work when it runs later.

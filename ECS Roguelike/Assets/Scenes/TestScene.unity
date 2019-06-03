@@ -232,8 +232,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03e5dfb7e0421d244af3d946724123c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spritePrefab: {fileID: 8329080390524561445, guid: 5719a0a2489afbc4eb3242c96335f9bb,
+  playerSpritePrefab: {fileID: 8329080390524561445, guid: 5719a0a2489afbc4eb3242c96335f9bb,
     type: 3}
+  enemySpritePrefab: {fileID: 8329080390524561445, guid: 24f55eb47af6bd241abba0904549d0f7,
+    type: 3}
+  enemiesToSpawn: 3
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
   m_Material: {fileID: 2100000, guid: f01d66deafef55747a410f15792986bb, type: 2}
 --- !u!4 &1697964815
