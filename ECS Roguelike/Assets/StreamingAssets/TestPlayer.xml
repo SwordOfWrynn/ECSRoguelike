@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<TestUnit>
+ <!-- A example Xml file for a unit -->
+<Unit>
 	<Name>TestUnit</Name>
+	
+	<Components>
+		<Translation></Translation>
+        <LocalToWorld></LocalToWorld>
+        <Rotation></Rotation>
+		<SpriteToGameObject></SpriteToGameObject>
+        <PlayerMouseInput></PlayerMouseInput>
+        <MovementInput></MovementInput>
+        <LocalPlayerTag></LocalPlayerTag>
+        <Stamina></Stamina>
+	</Components>
+	
 	<BaseSpritePath>TestUnit/Art/BaseSprite.png</BaseSpritePath>
-</TestUnit>
+	
+	<Staminia>
+		<StaminaCap>20</StaminaCap>
+		<StaminiaPerTurn>2</StaminiaPerTurn>
+	</Staminia>
+	
+	<Abilities>
+	</Abilities>
+	
+</Unit>

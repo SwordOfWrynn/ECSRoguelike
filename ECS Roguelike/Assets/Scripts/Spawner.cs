@@ -33,8 +33,7 @@ public class Spawner : MonoBehaviour
             typeof(PlayerMouseInput),
             typeof(MovementInput),
             typeof(LocalPlayerTag),
-            typeof(Stamina),
-            typeof(PhysicsCollider)
+            typeof(Stamina)
             );
 
         Entity entity = m_EntityManager.CreateEntity(playerArchtype);
@@ -51,10 +50,10 @@ public class Spawner : MonoBehaviour
             StaminaCap = 20,
             StaminaPerTurn = 2
         }) ;
-        m_EntityManager.SetComponentData(entity, new PhysicsCollider
-        {
-            Value = Unity.Physics.BoxCollider.Create(float3.zero, quaternion.identity, new float3(1, 1, 1), 0.5f)
-        });
+        //m_EntityManager.SetComponentData(entity, new PhysicsCollider
+        //{
+        //    Value = Unity.Physics.BoxCollider.Create(float3.zero, quaternion.identity, new float3(1, 1, 1), 0.5f)
+        //});
 
         SpawnEnemies();
         CreateRoom();
