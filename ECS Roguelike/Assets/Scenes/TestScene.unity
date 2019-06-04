@@ -156,7 +156,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -235,6 +235,10 @@ MonoBehaviour:
   playerSpritePrefab: {fileID: 8329080390524561445, guid: 5719a0a2489afbc4eb3242c96335f9bb,
     type: 3}
   enemySpritePrefab: {fileID: 8329080390524561445, guid: 24f55eb47af6bd241abba0904549d0f7,
+    type: 3}
+  floorSpritePrefab: {fileID: 2939555571991704821, guid: ed3f132a9bd10d740ae65f19753d38e7,
+    type: 3}
+  wallSpritePrefab: {fileID: 488514707932301063, guid: 5e341819202ae704085bb17e99b41060,
     type: 3}
   enemiesToSpawn: 3
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
