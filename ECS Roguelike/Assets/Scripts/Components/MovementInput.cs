@@ -10,6 +10,7 @@ using Unity.Mathematics;
 [Serializable]
 public struct MovementInput : IComponentData
 {
-    public int HorizontalValue;
-    public int VerticalValue;
+    //public int HorizontalValue;
+    //public int VerticalValue;
+    public float2 Value;
 }

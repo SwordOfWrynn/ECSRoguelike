@@ -4,7 +4,7 @@ using Unity.Entities;
 using Unity.Jobs;
 using Unity.Mathematics;
 using Unity.Transforms;
-using static Unity.Mathematics.math;
+using UnityEngine;
 
 public class MovementSystem : JobComponentSystem
 {
@@ -16,12 +16,14 @@ public class MovementSystem : JobComponentSystem
         public bool run;
         public void Execute(ref Translation translation, ref MovementInput movementInput, ref Stamina stamina)
         {
-            if (round(stamina.Value) > STAMINA_PER_MOVE && 
-                (movementInput.HorizontalValue != 0 || movementInput.VerticalValue != 0) 
+            if ((math.round(stamina.Value) > STAMINA_PER_MOVE) &&
+                (movementInput.Value.x != 0 || movementInput.Value.y != 0)
                 && run)
             {
-                translation.Value += new float3(movementInput.HorizontalValue, movementInput.VerticalValue, 0);
-                movementInput.HorizontalValue = movementInput.VerticalValue = 0;
+
+                translation.Value += new float3(movementInput.Value, 0);
+                //movementInput.HorizontalValue = movementInput.VerticalValue = 0;
+                movementInput.Value = float2.zero;
                 stamina.Value -= STAMINA_PER_MOVE;
             }
         }
