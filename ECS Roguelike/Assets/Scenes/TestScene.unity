@@ -159,6 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 425e9c2985e51ec46bf92df78877476c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerSpritePrefab: {fileID: 8329080390524561445, guid: 5719a0a2489afbc4eb3242c96335f9bb,
+    type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

@@ -6,14 +6,19 @@ using UnityEngine;
 public class XmlUnit : XmlObject
 {
     string m_Name;
+    public string Name { get => m_Name; }
     XmlUnitComponent[] m_Components;
+    public XmlUnitComponent[] Components { get => m_Components; }
     string m_BaseSpritePath;
+    public string SpritePath { get => m_BaseSpritePath; }
 
     public override XmlObjectType XmlObjectType => XmlObjectType.XmlUnit;
 
-    public XmlUnit(string unitName, XmlUnitComponent[] xmlUnitComponentArray)
+    public XmlUnit(string unitName, XmlUnitComponent[] xmlUnitComponentArray, string spritePath)
     {
+        m_Name = unitName;
         m_Components = xmlUnitComponentArray;
+        m_BaseSpritePath = spritePath;
 
         Debug.Log("The components for this unit");
         foreach(var component in m_Components)
@@ -27,7 +32,7 @@ public class XmlUnit : XmlObject
 public class XmlUnitComponent
 {
     public string Name;
-    public List<float> Values;
+    public List<string> Values;
 
     public override string ToString()
     {
@@ -37,7 +42,7 @@ public class XmlUnitComponent
             sb.Append(Name + ", ");
             foreach (var value in Values)
             {
-                sb.Append(value.ToString() + ", ");
+                sb.Append(value + ", ");
             }
             return sb.ToString();
         }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using UnityEngine;
@@ -35,29 +36,45 @@ public class XmlLoader
     {
         Debug.Log("XmlLoader -- LoadUnitXml");
 
+        //Values to pass to the unit when it's created
+        string unitName = string.Empty;
         List<XmlUnitComponent> unitComponents = new List<XmlUnitComponent>();
+        string spritePath = string.Empty;
 
-        foreach(var element in XmlFile.Elements())
+        foreach (var element in m_XmlFile.Elements())
         {
-            if (element.Name.ToString() == "Components")
-                foreach (var childElement in element.Elements())
-                {
-                    XmlUnitComponent component = new XmlUnitComponent();
-                    component.Name = childElement.Name.ToString();
-                    if (childElement.HasElements)
-                    {
-                        component.Values = new List<float>();
-                        foreach (var componentElement in childElement.Elements())
-                        {
-                            component.Values.Add(float.Parse(componentElement.Value));
-                        }
-                    }
-                    unitComponents.Add(component);
-                }
+            if (element.Name == "BaseSpritePath")
+                spritePath = element.Value;
+            else if (element.Name == "Name")
+                unitName = element.Value;
 
         }
+        //Create a LINQ query to find the Components element. then get its children ordered by name
+        var componentQuery =
+            from element in m_XmlFile.Elements()
+            where element.Name == "Components"
+            from component in element.Elements()
+            orderby component.Name.ToString()
+            select component;
 
-        m_XmlObject = new XmlUnit(unitComponents.ToArray());
+        //Iterate over the query for the results
+        foreach(var component in componentQuery)
+        {
+            XmlUnitComponent unitComponent = new XmlUnitComponent();
+            unitComponent.Name = component.Name.ToString();
+            if (component.HasElements)
+            {
+                unitComponent.Values = new List<string>();
+                foreach (var componentelement in component.Elements())
+                {
+                    unitComponent.Values.Add(componentelement.Value);
+                }
+            }
+            unitComponents.Add(unitComponent);
+        }
+
+        //Create the unit
+        m_XmlObject = new XmlUnit(unitName, unitComponents.ToArray(), spritePath);
     }
 
     void LoadItemXml()
@@ -71,5 +88,4 @@ public class XmlLoader
         Debug.Log("XmlLoader -- LoadRoomXml");
         throw new System.NotImplementedException();
     }
-
 }

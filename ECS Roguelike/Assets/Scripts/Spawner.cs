@@ -25,31 +25,31 @@ public class Spawner : MonoBehaviour
     {
         m_EntityManager = World.Active.EntityManager;
 
-        EntityArchetype playerArchtype = m_EntityManager.CreateArchetype(
-            typeof(SpriteToGameObject),
-            typeof(LocalToWorld),
-            typeof(Translation),
-            typeof(Rotation),
-            typeof(PlayerMouseInput),
-            typeof(MovementInput),
-            typeof(LocalPlayerTag),
-            typeof(Stamina)
-            );
+        //EntityArchetype playerArchtype = m_EntityManager.CreateArchetype(
+        //    typeof(SpriteToGameObject),
+        //    typeof(LocalToWorld),
+        //    typeof(Translation),
+        //    typeof(Rotation),
+        //    typeof(PlayerMouseInput),
+        //    typeof(MovementInput),
+        //    typeof(LocalPlayerTag),
+        //    typeof(Stamina)
+        //    );
 
-        Entity entity = m_EntityManager.CreateEntity(playerArchtype);
-        GameObject gameObject = Instantiate(playerSpritePrefab);
-        int visualID = SpriteManager.RegisterVisualGameObjectAndReturnKey(gameObject);
+        //Entity entity = m_EntityManager.CreateEntity(playerArchtype);
+        //GameObject gameObject = Instantiate(playerSpritePrefab);
+        //int visualID = SpriteManager.RegisterVisualGameObjectAndReturnKey(gameObject);
 
-        m_EntityManager.SetComponentData(entity, new SpriteToGameObject
-        {
-            VisualID = visualID
-        });
-        m_EntityManager.SetComponentData(entity, new Stamina
-        {
-            Value = 5,
-            StaminaCap = 20,
-            StaminaPerTurn = 2
-        }) ;
+        //m_EntityManager.SetComponentData(entity, new SpriteToGameObject
+        //{
+        //    VisualID = visualID
+        //});
+        //m_EntityManager.SetComponentData(entity, new Stamina
+        //{
+        //    Value = 5,
+        //    StaminaCap = 20,
+        //    StaminaPerTurn = 2
+        //}) ;
         //m_EntityManager.SetComponentData(entity, new PhysicsCollider
         //{
         //    Value = Unity.Physics.BoxCollider.Create(float3.zero, quaternion.identity, new float3(1, 1, 1), 0.5f)

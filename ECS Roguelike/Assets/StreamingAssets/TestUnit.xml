@@ -11,10 +11,10 @@
         <PlayerMouseInput></PlayerMouseInput>
         <MovementInput></MovementInput>
         <LocalPlayerTag></LocalPlayerTag>
-        <Staminia>
+        <Stamina>
 			<StaminaCap>20</StaminaCap>
 			<StaminiaPerTurn>2</StaminiaPerTurn>
-		</Staminia>
+		</Stamina>
 	</Components>
 	
 	<BaseSpritePath>ExampleUnit/Art/BaseSprite.png</BaseSpritePath>
