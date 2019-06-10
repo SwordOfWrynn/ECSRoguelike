@@ -40,11 +40,15 @@ public class XmlLoader
         string unitName = string.Empty;
         List<XmlUnitComponent> unitComponents = new List<XmlUnitComponent>();
         string spritePath = string.Empty;
+        int spritePosition = 0;
 
         foreach (var element in m_XmlFile.Elements())
         {
-            if (element.Name == "BaseSpritePath")
-                spritePath = element.Value;
+            if (element.Name == "Art")
+            {
+                spritePath = element.Element("BaseSpritePath").Value;
+                spritePosition = int.Parse(element.Element("SpritePosition").Value);
+            }
             else if (element.Name == "Name")
                 unitName = element.Value;
 
@@ -74,7 +78,7 @@ public class XmlLoader
         }
 
         //Create the unit
-        m_XmlObject = new XmlUnit(unitName, unitComponents.ToArray(), spritePath);
+        m_XmlObject = new XmlUnit(unitName, unitComponents.ToArray(), spritePath, spritePosition);
     }
 
     void LoadItemXml()

@@ -11,14 +11,16 @@ public class XmlUnit : XmlObject
     public XmlUnitComponent[] Components { get => m_Components; }
     string m_BaseSpritePath;
     public string SpritePath { get => m_BaseSpritePath; }
-
+    int m_SpritePosition;
+    public int SpritePosition { get => m_SpritePosition; }
     public override XmlObjectType XmlObjectType => XmlObjectType.XmlUnit;
 
-    public XmlUnit(string unitName, XmlUnitComponent[] xmlUnitComponentArray, string spritePath)
+    public XmlUnit(string unitName, XmlUnitComponent[] xmlUnitComponentArray, string spritePath, int spritePosition)
     {
         m_Name = unitName;
         m_Components = xmlUnitComponentArray;
         m_BaseSpritePath = spritePath;
+        m_SpritePosition = spritePosition;
 
         //Debug.Log("The components for this unit");
         //foreach(var component in m_Components)
@@ -32,7 +34,7 @@ public class XmlUnit : XmlObject
     {
         StringBuilder sb = new StringBuilder();
 
-        sb.Append($"XmlUnit: {m_Name}, Art Path: {m_BaseSpritePath}");
+        sb.Append($"XmlUnit: {m_Name}, Art Path: {m_BaseSpritePath}, sprite position {m_SpritePosition}");
         if (m_Components.Length <= 0)
             return sb.ToString();
         foreach(var value in m_Components)

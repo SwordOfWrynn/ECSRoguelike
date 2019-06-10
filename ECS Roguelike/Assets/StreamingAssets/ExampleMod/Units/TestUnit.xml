@@ -17,7 +17,10 @@
 		</Stamina>
 	</Components>
 	
-	<BaseSpritePath>ExampleUnit/Art/BaseSprite.png</BaseSpritePath>
+	<Art>
+		<BaseSpritePath>ExampleMod/Art/0x72_DungeonTilesetII_v1.2.png</BaseSpritePath>
+		<SpritePosition>286</SpritePosition>
+	</Art>
 	
 	<Abilities>
 	</Abilities>
