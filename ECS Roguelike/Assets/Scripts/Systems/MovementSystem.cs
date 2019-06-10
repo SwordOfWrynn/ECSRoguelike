@@ -19,7 +19,6 @@ public class MovementSystem : ComponentSystem
             {
 
                 translation.Value += new float3(movementInput.Value, 0);
-                //movementInput.HorizontalValue = movementInput.VerticalValue = 0;
                 movementInput.Value = float2.zero;
                 stamina.Value -= STAMINA_PER_MOVE;
             }

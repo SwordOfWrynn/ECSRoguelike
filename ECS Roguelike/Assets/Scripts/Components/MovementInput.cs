@@ -3,11 +3,10 @@ using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 
-///<see cref="MovementSystem"/>
+///<see cref="MovementSystem"/> //Uses these values to move entities
 
 ///<see cref="PlayerKeyboardInputSystem"/> //Modifies these values on the player
 
-[Serializable]
 public struct MovementInput : IComponentData
 {
     //public int HorizontalValue;

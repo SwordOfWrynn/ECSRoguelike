@@ -20,13 +20,28 @@ public class XmlUnit : XmlObject
         m_Components = xmlUnitComponentArray;
         m_BaseSpritePath = spritePath;
 
-        Debug.Log("The components for this unit");
-        foreach(var component in m_Components)
-        {
-            Debug.Log(component.ToString());
-        }
-
+        //Debug.Log("The components for this unit");
+        //foreach(var component in m_Components)
+        //{
+        //    Debug.Log(component.ToString());
+        //}
+        Debug.Log(ToString());
     }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+
+        sb.Append($"XmlUnit: {m_Name}, Art Path: {m_BaseSpritePath}");
+        if (m_Components.Length <= 0)
+            return sb.ToString();
+        foreach(var value in m_Components)
+        {
+            sb.Append($", Component: {value.ToString()}");
+        }
+        return sb.ToString();
+    }
+
 }
 
 public class XmlUnitComponent
@@ -39,10 +54,10 @@ public class XmlUnitComponent
         if (Values != null && Values.Count > 0)
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append(Name + ", ");
+            sb.Append(Name );
             foreach (var value in Values)
             {
-                sb.Append(value + ", ");
+                sb.Append($",  {value}");
             }
             return sb.ToString();
         }
