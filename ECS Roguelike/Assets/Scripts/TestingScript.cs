@@ -43,6 +43,9 @@ public class TestingScript : MonoBehaviour
 
         Entity entity = EntityManager.CreateEntity(playerArchtype);
         GameObject gameObject = Instantiate(playerSpritePrefab);
+
+
+
         int visualID = SpriteManager.RegisterVisualGameObjectAndReturnKey(gameObject);
 
         EntityManager.SetComponentData(entity, new SpriteToGameObject
