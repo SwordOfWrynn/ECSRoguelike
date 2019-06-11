@@ -12,6 +12,7 @@
         <MovementInput></MovementInput>
         <LocalPlayerTag></LocalPlayerTag>
         <Stamina>
+			<StaminaStart>5</StaminaStart>
 			<StaminaCap>20</StaminaCap>
 			<StaminiaPerTurn>2</StaminiaPerTurn>
 		</Stamina>
