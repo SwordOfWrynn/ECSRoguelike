@@ -54,11 +54,20 @@ public class TestingScript : MonoBehaviour
         if (spriteSheetIndex == -1)
         {
             FileInfo spriteFile = new FileInfo(Application.streamingAssetsPath + "/" + unit.SpritePath);
+
             spriteSheets.Add(new SpriteSheet() { Name = unit.SpritePath, Sprites = GetSpriteSheetFromFile(spriteFile) });
             spriteSheetIndex = spriteSheets.Count - 1;
         }
+        Sprite[] spritesArray = spriteSheets[spriteSheetIndex].Sprites;
+        gameObject.GetComponent<SpriteRenderer>().sprite = spritesArray[unit.SpritePosition];
 
-        gameObject.GetComponent<SpriteRenderer>().sprite = spriteSheets[spriteSheetIndex].Sprites[unit.SpritePosition];
+        //Sprite sprite = spriteSheets[spriteSheetIndex].Sprites[unit.SpritePosition];
+        //gameObject.GetComponent<SpriteRenderer>().sprite = sprite;
+
+        //List<SpriteSheet> sheets = spriteSheets;
+        //gameObject.GetComponent<SpriteRenderer>().sprite = sheets[spriteSheetIndex].Sprites[unit.SpritePosition];
+
+        //gameObject.GetComponent<SpriteRenderer>().sprite = spriteSheets[spriteSheetIndex].Sprites[unit.SpritePosition];
 
         int visualID = SpriteManager.RegisterVisualGameObjectAndReturnKey(gameObject);
 
@@ -119,7 +128,6 @@ public class TestingScript : MonoBehaviour
             {
                 //Debug.Log("At position " + x + "," + y);
                 sprites[arrayPosition] = Sprite.Create(texture, new Rect(x * 16, y * 16, 16, 16), new Vector2(0.5f, 0.5f), 16);
-                //sprites[arrayPosition].
                 arrayPosition++;
             }
         }
