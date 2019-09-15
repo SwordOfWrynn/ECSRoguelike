@@ -27,7 +27,7 @@ public class XmlLoader
                 LoadRoomXml();
                 break;
             default:
-                Debug.LogError("XmlLoader: Unregonized xml");
+                Debug.LogError("XmlLoader: Unregonized xml type");
                 break;
         }
     }
